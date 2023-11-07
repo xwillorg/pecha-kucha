@@ -2,6 +2,10 @@
 	let start: boolean = false;
 	let time: number = 120;
 	let interval: number;
+	let end: boolean = false;
+
+	$: if (time === 0) start = false;
+	$: if (time === 0) end = true;
 
 	const startTimer = () => {
 		if (start) return;
@@ -12,8 +16,11 @@
 		}, 1000);
 	};
 
+	let scroll: number = 0;
+
 	const scrollTonNextSlide = () => {
-		if (start) window.scrollBy(0, window.innerHeight);
+		if (start) window.scrollTo({ top: scroll, behavior: 'smooth' });
+		scroll += window.innerHeight;
 	};
 </script>
 
@@ -28,6 +35,10 @@
 		{/if}
 	</button>
 </div>
+
+{#if end}
+	<div id="end" />
+{/if}
 
 <style>
 	#control {
@@ -47,5 +58,25 @@
 		border-radius: 20px;
 		font-size: 40px;
 		cursor: pointer;
+	}
+
+	#end {
+		position: absolute;
+		width: 100vw;
+		height: 100vh;
+		background-color: red;
+		animation: fade 2s infinite;
+	}
+
+	@keyframes fade {
+		0% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
+		}
 	}
 </style>
