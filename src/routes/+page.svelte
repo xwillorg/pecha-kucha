@@ -11,10 +11,16 @@
 	<p>By Felix Willen</p>
 </div>
 
-<Image src="https://source.unsplash.com/random/800x600" />
-<Image src="https://source.unsplash.com/random/800x600" />
-<Image src="https://source.unsplash.com/random/800x600" />
-<Image src="https://source.unsplash.com/random/800x600" />
+<div id="images">
+	<Image src="https://source.unsplash.com/random/800x600" />
+	<Image src="https://source.unsplash.com/random/800x600" />
+	<Image src="https://source.unsplash.com/random/800x600" />
+	<Image src="https://source.unsplash.com/random/800x600" />
+</div>
+
+<div id="end">
+	<h1>The End</h1>
+</div>
 
 <style>
 	:global(body) {
@@ -23,7 +29,8 @@
 		font-family: sans-serif;
 		background-color: black;
 	}
-	#intro {
+	#intro,
+	#end {
 		width: 100vw;
 		height: 100vh;
 		display: flex;
@@ -35,5 +42,11 @@
 
 	p {
 		color: wheat;
+	}
+
+	#images {
+		display: flex;
+		flex-direction: column;
+		gap: 0px;
 	}
 </style>
